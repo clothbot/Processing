@@ -1,13 +1,14 @@
 // DXF Tests.
 // - creates DXF files.
-// - bug in Mac OS X (and others?) makes dxf n*8192 byte truncated files=
+// - Problem: in Mac OS X (and others?) makes dxf n*8192 byte truncated files=
+//   - Solution: Add necessary pgDxf.dispose() call.
 
 import processing.dxf.*;
 
 PGraphics pgDxf;
 
 void setup() {
-  size(screen.width/2, screen.height/2, P2D);
+  size(screen.width/2, screen.height/2, JAVA2D);
   background(153);
 }
 
@@ -24,6 +25,7 @@ void draw() {
      }
     }
     pgDxf.endDraw();
+    pgDxf.dispose();
   }
 }
 
