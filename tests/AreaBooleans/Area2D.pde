@@ -1,16 +1,20 @@
 // Testing 2D boolean operation using Java built-in Area construct.
 // - extending example from http://wiki.processing.org/w/Using_AWT's_Polygon_class
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Area;
+import java.awt.geom.PathIterator;
+import java.awt.Polygon;
 
-class Area2D extends java.awt.geom.Area{
+class Area2D extends Area{
   public Area2D(Poly p) {
-    super( (java.awt.Polygon) p );
+    super( (Polygon) p );
   }
   public Area2D() {
     super();
   }
   
   void drawMe(){
-    java.awt.geom.PathIterator pathIter=getPathIterator(new java.awt.geom.AffineTransform());
+    PathIterator pathIter=getPathIterator(new AffineTransform());
     beginShape();
     float[] newCoords={0,0};
     while(!pathIter.isDone()) {

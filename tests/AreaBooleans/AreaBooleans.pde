@@ -21,44 +21,18 @@ void setup() {
 void draw(){
   background(255);
   fill(255);
-  if(p1.contains(mouseX,mouseY)) {
-    fill(255,0,0);
-  }
-  if(p2.contains(mouseX,mouseY)) {
-    fill(0,255,0);
-  }
   if(a3.contains(mouseX,mouseY)) {
     fill(255,255,0);
-  }
-  p1.drawMe();
-  p2.drawMe();
-}
- 
-/*
- The class inherit all the fields, constructors and functions 
- of the java.awt.Polygon class, including contains(), xpoint,ypoint,npoint
-*/
- 
-class Poly extends java.awt.Polygon{
-  public Poly(int[] x,int[] y, int n){
-    //call the java.awt.Polygon constructor
-    super(x,y,n);
-  }
- 
-  void drawMe(){
-    beginShape();
-    for(int i=0;i<npoints;i++){
-      vertex(xpoints[i],ypoints[i]);
-    }
-    endShape();
+    a3.drawMe();
+  } else if(p1.contains(mouseX,mouseY)) {
+    fill(255,0,0);
+    p1.drawMe();
+  } else if(p2.contains(mouseX,mouseY)) {
+    fill(0,255,0);
+    p2.drawMe();
+  } else {
+    p1.drawMe();
+    p2.drawMe();
   }
 }
 
-class Area2D extends java.awt.geom.Area{
-  public Area2D(Poly p) {
-    super( (java.awt.Polygon) p );
-  }
-  public Area2D() {
-    super();
-  }
-}
